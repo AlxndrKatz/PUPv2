@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   app_pup:
-    image: 'pickup-point:latest'
+    image: alexanderkatzur1628/pickup-point:v1
     ports:
       - "8080:8080"
     depends_on:
@@ -11,7 +11,7 @@ services:
       - SPRING_DATASOURCE_USERNAME=${DB_USER}
       - SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}
   db_pup:
-    image: 'postgres:16'
+    image: postgres:16
     restart: always
     environment:
       - POSTGRES_DB=db_pickup
