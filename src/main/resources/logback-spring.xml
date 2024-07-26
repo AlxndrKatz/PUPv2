@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <include resource="org/springframework/boot/logback/base/xml"/>
+    <include resource="org/springframework/boot/logging/logback/base/xml"/>
     <springProfile name="!dev">
-        <appender name="LOGSTASH"
-                  class="net.logstash.logback.appender.LogstashAccessTcpSocketAppender">
-            <destination>https://194.87.237.197:50000</destination>
-            <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder">
+        <appender name="logstash" class="net.logstash.logback.appender.LogstashAccessTcpSocketAppender">
+            <destination>194.87.237.197:50000</destination>
+            <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
                 <providers>
                     <mdc />
                     <context />
@@ -19,12 +18,13 @@
                         </pattern>
                     </pattern>
                     <threadName />
+                    <message />
                     <logstashMarkers/>
                     <stacktrace/>
                 </providers>
             </encoder>
         </appender>
-        <root level="INFO">
+        <root level="info">
             <appender-ref ref="logstash"/>
         </root>
     </springProfile>
