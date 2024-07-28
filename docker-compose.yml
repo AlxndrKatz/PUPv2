@@ -1,10 +1,10 @@
-version: '3.9'
+version: '3.7'
 
 services:
   app_pup:
     image: alexanderkatzur1628/pickup-point:v1
     ports:
-      - "8080:8080"
+      - "8081:8080"
     depends_on:
       - db_pup
     environment:
@@ -14,8 +14,8 @@ services:
     image: postgres:16
     restart: always
     environment:
-      - POSTGRES_DB=db_pickup
+      - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
-      - "5432:5432"
+      - "5433:5432"
