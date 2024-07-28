@@ -61,4 +61,4 @@ jobs:
             sudo docker-compose down
             sudo docker rm alexanderkatzur1628/pickup-point:v1
             sudo docker rmi alexanderkatzur1628/pickup-point:v1
-            sudo docker-compose up -d
+            sudo docker-compose up
