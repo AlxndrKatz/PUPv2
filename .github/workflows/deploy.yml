@@ -53,6 +53,7 @@ jobs:
           username: ${{secrets.REMOTE_USER}}
           key: ${{secrets.PRIVATE_KEY}}
           script: | 
+            echo DB_URL=jdbc:postgresql://localhost:5433/db_pickup >>.env
             echo DB_USER=${{ secrets.DB_USER}} >> .env
             echo DB_PASSWORD=${{ secrets.DB_PASSWORD}} >> .env
             echo DB_NAME=${{ secrets.POSTGRES_DB}} >> .env
