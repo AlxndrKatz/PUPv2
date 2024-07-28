@@ -52,11 +52,9 @@ jobs:
           host: ${{secrets.HOST}}
           username: ${{secrets.REMOTE_USER}}
           key: ${{secrets.PRIVATE_KEY}}
-          script: | 
-            echo DB_URL=jdbc:postgresql://localhost:5433/db_pickup >>.env
+          script: |
             echo DB_USER=${{ secrets.DB_USER}} >> .env
             echo DB_PASSWORD=${{ secrets.DB_PASSWORD}} >> .env
-            echo POSTGRES_DB=${{ secrets.POSTGRES_DB}} >> .env
             
             cd /home/${{secrets.REMOTE_USER}}/pick_up/
             sudo docker-compose down

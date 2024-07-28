@@ -14,7 +14,7 @@ services:
     image: postgres:16
     restart: always
     environment:
-      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_DB=db_pickup
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
