@@ -57,9 +57,8 @@ jobs:
             echo DB_PASSWORD=${{ secrets.DB_PASSWORD}} >> .env
             echo DB_NAME=${{ secrets.POSTGRES_DB}} >> .env
             
-            sudo -S docker stop alexanderkatzur1628/pickup-point:v1
-            sudo -S docker rm alexanderkatzur1628/pickup-point:v1
-            sudo -S docker rmi alexanderkatzur1628/pickup-point:v1
-            sudo -S docker-compose -f /home/${{secrets.REMOTE_USER}}/pick_up/docker-compose.yml pull
-            sudo -S docker-compose -f /home/${{secrets.REMOTE_USER}}/pick_up/docker-compose.yml up -d --remove-orphans
-            sudo -S docker ps -a
+            cd /home/${{secrets.REMOTE_USER}}/pick_up/
+            sudo docker-compose down
+            sudo docker rm alexanderkatzur1628/pickup-point:v1
+            sudo docker rmi alexanderkatzur1628/pickup-point:v1
+            sudo docker-compose up -d
