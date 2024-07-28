@@ -20,7 +20,7 @@
                     <threadName />
                     <message />
                     <logstashMarkers/>
-                    <stacktrace full="true"/>
+                    <stacktrace/>
                 </providers>
             </encoder>
         </appender>
