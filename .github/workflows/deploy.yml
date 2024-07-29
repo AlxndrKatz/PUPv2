@@ -58,8 +58,10 @@ jobs:
             echo DB_USER=${{ secrets.DB_USER}} >> .env
             echo DB_PASSWORD=${{ secrets.DB_PASSWORD}} >> .env
             
-            sudo docker stop alexanderkatzur1628/pickup-point:v1
-            sudo docker rm alexanderkatzur1628/pickup-point:v1
-            sudo docker rmi alexanderkatzur1628/pickup-point:v1
-            sudo docker-compose up
-            sudo docker ps -a
+            sudo -S docker stop alexanderkatzur1628/pickup-point:v1
+            sudo -S docker rm alexanderkatzur1628/pickup-point:v1
+            sudo -S docker rmi alexanderkatzur1628/pickup-point:v1
+            sudo -S docker-compose -f /home/${{secrets.REMOTE_USER}}/pick_up/docker-compose.yml pull
+            sudo -S docker-compose -f /home/${{secrets.REMOTE_USER}}/pick_up/docker-compose.yml up -d --remove-orphans
+            sudo -S docker system prune -f
+            sudo -S docker ps -a
