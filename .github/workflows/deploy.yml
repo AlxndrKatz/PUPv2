@@ -54,11 +54,14 @@ jobs:
           key: ${{secrets.PRIVATE_KEY}}
           script: |
             cd /home/${{secrets.REMOTE_USER}}/pick_up/
-            set -x
-            sudo echo DB_USER=${{ secrets.DB_USER}} > .env
+            #set -x
+            sudo echo DB_USER=${{ secrets.DB_USER}} >> .env
             sudo echo DB_PASSWORD=${{ secrets.DB_PASSWORD}} >> .env
             
-            sudo docker-compose down
+            #sudo docker-compose down
+            sudo docker stop alexanderkatzur1628/pickup-point:v1
+            sudo docker rm alexanderkatzur1628/pickup-point:v1
             sudo docker rmi alexanderkatzur1628/pickup-point:v1
-            sudo docker pull alexanderkatzur1628/pickup-point:v1
+            #sudo docker pull alexanderkatzur1628/pickup-point:v1
             sudo docker-compose up
+            sudo docker ps -a
