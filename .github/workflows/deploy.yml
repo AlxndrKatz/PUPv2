@@ -55,7 +55,7 @@ jobs:
           script: |
             cd /home/${{secrets.REMOTE_USER}}/pick_up/
             set -x
-            sudo echo DB_USER=${{ secrets.DB_USER}} >> .env
+            sudo echo DB_USER=${{ secrets.DB_USER}} > .env
             sudo echo DB_PASSWORD=${{ secrets.DB_PASSWORD}} >> .env
             
             sudo docker-compose down
