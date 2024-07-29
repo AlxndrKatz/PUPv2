@@ -55,8 +55,8 @@ jobs:
           script: |
             cd /home/${{secrets.REMOTE_USER}}/pick_up/
             chmod 777 .env
-            sudo echo DB_USER=${{ secrets.DB_USER}} >> .env
-            sudo echo DB_PASSWORD=${{ secrets.DB_PASSWORD}} >> .env
+            echo DB_USER=${{ secrets.DB_USER}} >> .env
+            echo DB_PASSWORD=${{ secrets.DB_PASSWORD}} >> .env
             
             sudo docker stop alexanderkatzur1628/pickup-point:v1
             sudo docker rm alexanderkatzur1628/pickup-point:v1
