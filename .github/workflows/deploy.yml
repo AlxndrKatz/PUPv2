@@ -53,6 +53,7 @@ jobs:
           username: ${{secrets.REMOTE_USER}}
           key: ${{secrets.PRIVATE_KEY}}
           script: |
+            set -x
             echo DB_USER=${{ secrets.DB_USER}} >> .env
             echo DB_PASSWORD=${{ secrets.DB_PASSWORD}} >> .env
             
