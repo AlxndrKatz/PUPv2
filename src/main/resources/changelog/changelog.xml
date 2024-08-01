@@ -107,7 +107,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="addOrdersForeignKey" author="Alex K">
+    <changeSet id="addOrdersForeignKey" author="Alexander Katsur">
         <addForeignKeyConstraint baseTableName="orders_pick_up_point"
                                  baseColumnNames="user_id"
                                  constraintName="FK_orders_user_id"
