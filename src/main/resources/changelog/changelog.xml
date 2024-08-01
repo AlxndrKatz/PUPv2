@@ -1,0 +1,130 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    
+    <changeSet author="AlxndrKatz" id="1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="roles_pick_up_point"/>
+            </not>
+        </preConditions>
+        <createTable tableName="roles_pick_up_point">
+            <column name="id" type="bigserial" autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="authority" type="varchar(255)"/>
+        </createTable>
+        <insert tableName="roles_pick_up_point">
+            <column name="id" value="1" />
+            <column name="authority" value="ROLE_USER" />
+        </insert>
+        <insert tableName="roles_pick_up_point">
+            <column name="id" value="2" />
+            <column name="authority" value="ROLE_EMPLOYEE" />
+        </insert>
+        <insert tableName="roles_pick_up_point">
+            <column name="id" value="3" />
+            <column name="authority" value="ROLE_ADMIN" />
+        </insert>
+    </changeSet>
+
+
+
+    <changeSet author="AlxndrKatz" id="2">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="users_pick_up_point"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="users_pick_up_point_seq" startValue="1" incrementBy="50"/>
+        <createTable tableName="users_pick_up_point">
+            <column name="id" type="bigint" >
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="age" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="user_name" type="varchar(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <insert tableName="users_pick_up_point">
+            <column name="id" value="1" />
+            <column name="age" value="22" />
+            <column name="email" value="wankenstein@gmail.com" />
+            <column name="user_name" value="Mace Terbaithe" />
+            <column name="password" value="123" />
+        </insert>
+    </changeSet>
+
+
+    
+    <changeSet id="3" author="AlxndrKatz">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="user_roles_pup"/>
+            </not>
+        </preConditions>
+        <createTable tableName="user_roles_pup">
+            <column name="user_id" type="bigint">
+            </column>
+            <column name="role_id" type="bigint">
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="user_roles_pup"
+                                 baseColumnNames="user_id"
+                                 constraintName="FK_users_id"
+                                 referencedTableName="users_pick_up_point"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="roles_pick_up_point"
+                                 baseColumnNames="id"
+                                 constraintName="FK_roles_id"
+                                 referencedTableName="roles_pick_up_point"
+                                 referencedColumnNames="id"/>
+        <insert tableName="user_roles_pup">
+            <column name="user_id" value="1" />
+            <column name="role_id" value="3" />
+        </insert>
+    </changeSet>
+    
+    
+    <changeSet id="4" author="AlxndrKatz">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="orders_pick_up_point"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="orders_pick_up_point_seq" startValue="1" incrementBy="50"/>
+        <createTable tableName="orders_pick_up_point">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" unique="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints checkConstraint=" status in ('RECEIVED','PICKED_UP','RETURN')" />
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint baseTableName="orders_pick_up_point"
+                                 baseColumnNames="user_id"
+                                 constraintName="FK_orders_user_id"
+                                 referencedTableName="users_pick_up_point"
+                                 referencedColumnNames="id" />
+    </changeSet>
+
+
+
+</databaseChangeLog>
