@@ -3,7 +3,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="createRolesTable"  author="Alex K">
+    <changeSet id="createRolesTable"  author="Alexander Katsur">
         <createTable tableName="roles_pick_up_point">
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
@@ -14,7 +14,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="insertDefaultRoles" author="Alex K">
+    <changeSet id="insertDefaultRoles" author="Alexander Katsur">
         <insert tableName="roles_pick_up_point">
             <column name="id" value="1" />
             <column name="authority" value="ROLE_USER" />
@@ -29,7 +29,7 @@
         </insert>
     </changeSet>
 
-    <changeSet id="createUsersTable" author="Alex K">
+    <changeSet id="createUsersTable" author="Alexander Katsur">
         <createTable tableName="users_pick_up_point">
             <column name="id" type="bigint" >
                 <constraints primaryKey="true" nullable="false" unique="true"/>
@@ -49,7 +49,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="insertDefaultAdmin" author="Alex K">
+    <changeSet id="insertDefaultAdmin" author="Alexander Katsur">
         <insert tableName="users_pick_up_point">
             <column name="id" value="1" />
             <column name="age" value="22" />
@@ -59,7 +59,7 @@
         </insert>
     </changeSet>
 
-    <changeSet id="createUserRolesTable" author="Alex K">
+    <changeSet id="createUserRolesTable" author="Alexander Katsur">
         <createTable tableName="user_roles_pup">
             <column name="user_id" type="bigint">
                 <constraints nullable="false"/>
@@ -70,27 +70,27 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="addForeignKeysUsersRoles" author="Alex K">
+    <changeSet id="addForeignKeysUsersRoles" author="Alexander Katsur">
         <addForeignKeyConstraint baseTableName="user_roles_pup"
                                  baseColumnNames="user_id"
                                  constraintName="FK_users_id"
                                  referencedTableName="users_pick_up_point"
                                  referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="roles_pick_up_point"
+        <addForeignKeyConstraint baseTableName="user_roles_pup"
                                  baseColumnNames="id"
                                  constraintName="FK_roles_id"
                                  referencedTableName="roles_pick_up_point"
                                  referencedColumnNames="id"/>
     </changeSet>
 
-    <changeSet id="insertDefaultUserRole" author="Alex K">
+    <changeSet id="insertDefaultUserRole" author="Alexander Katsur">
         <insert tableName="user_roles_pup">
             <column name="user_id" value="1" />
             <column name="role_id" value="3" />
         </insert>
     </changeSet>
 
-    <changeSet id="createOrdersTable" author="Alex K">
+    <changeSet id="createOrdersTable" author="Alexander Katsur">
         <createTable tableName="orders_pick_up_point">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" unique="true" nullable="false"/>
@@ -99,7 +99,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="status" type="varchar(255)">
-                <constraints checkConstraint=" status in ('RECEIVED','PICKED_UP','RETURN')" />
+                <constraints nullable="false" checkConstraint=" status in ('RECEIVED','PICKED_UP','RETURN')" />
             </column>
             <column name="user_id" type="bigint">
                 <constraints nullable="false"/>
