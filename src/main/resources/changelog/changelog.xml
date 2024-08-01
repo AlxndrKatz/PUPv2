@@ -5,7 +5,7 @@
 
     <changeSet id="createRolesTable"  author="Alexander Katsur">
         <createTable tableName="roles_pick_up_point">
-            <column name="id" type="BIGINT" autoIncrement="true">
+            <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="authority" type="varchar(255)">
