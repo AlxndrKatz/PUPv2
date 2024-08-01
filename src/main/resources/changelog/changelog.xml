@@ -7,10 +7,12 @@
     
     <changeSet author="AlxndrKatz" id="1">
         <createTable tableName="roles_pick_up_point">
-            <column name="id" type="bigserial" autoIncrement="true">
-                <constraints primaryKey="true" />
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="authority" type="varchar(255)"/>
+            <column name="authority" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
         <insert tableName="roles_pick_up_point">
             <column name="id" value="1" />
@@ -60,8 +62,10 @@
     <changeSet id="3" author="AlxndrKatz">
         <createTable tableName="user_roles_pup">
             <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
             </column>
             <column name="role_id" type="bigint">
+                <constraints nullable="false"/>
             </column>
         </createTable>
         <addForeignKeyConstraint baseTableName="user_roles_pup"
