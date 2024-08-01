@@ -6,11 +6,6 @@
 
     
     <changeSet author="AlxndrKatz" id="1">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="roles_pick_up_point"/>
-            </not>
-        </preConditions>
         <createTable tableName="roles_pick_up_point">
             <column name="id" type="bigserial" autoIncrement="true">
                 <constraints primaryKey="true" />
@@ -34,12 +29,6 @@
 
 
     <changeSet author="AlxndrKatz" id="2">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="users_pick_up_point"/>
-            </not>
-        </preConditions>
-        <createSequence sequenceName="users_pick_up_point_seq" startValue="1" incrementBy="50"/>
         <createTable tableName="users_pick_up_point">
             <column name="id" type="bigint" >
                 <constraints primaryKey="true" nullable="false" unique="true"/>
@@ -69,11 +58,6 @@
 
     
     <changeSet id="3" author="AlxndrKatz">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="user_roles_pup"/>
-            </not>
-        </preConditions>
         <createTable tableName="user_roles_pup">
             <column name="user_id" type="bigint">
             </column>
@@ -98,12 +82,6 @@
     
     
     <changeSet id="4" author="AlxndrKatz">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="orders_pick_up_point"/>
-            </not>
-        </preConditions>
-        <createSequence sequenceName="orders_pick_up_point_seq" startValue="1" incrementBy="50"/>
         <createTable tableName="orders_pick_up_point">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" unique="true" nullable="false"/>
