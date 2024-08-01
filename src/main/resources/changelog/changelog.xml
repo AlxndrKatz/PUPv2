@@ -3,8 +3,6 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-
-    
     <changeSet author="AlxndrKatz" id="1">
         <createTable tableName="roles_pick_up_point">
             <column name="id" type="BIGINT" autoIncrement="true">
@@ -27,8 +25,6 @@
             <column name="authority" value="ROLE_ADMIN" />
         </insert>
     </changeSet>
-
-
 
     <changeSet author="AlxndrKatz" id="2">
         <createTable tableName="users_pick_up_point">
@@ -57,8 +53,6 @@
         </insert>
     </changeSet>
 
-
-    
     <changeSet id="3" author="AlxndrKatz">
         <createTable tableName="user_roles_pup">
             <column name="user_id" type="bigint">
@@ -83,8 +77,7 @@
             <column name="role_id" value="3" />
         </insert>
     </changeSet>
-    
-    
+
     <changeSet id="4" author="AlxndrKatz">
         <createTable tableName="orders_pick_up_point">
             <column name="id" type="bigint">
@@ -106,7 +99,4 @@
                                  referencedTableName="users_pick_up_point"
                                  referencedColumnNames="id" />
     </changeSet>
-
-
-
 </databaseChangeLog>
