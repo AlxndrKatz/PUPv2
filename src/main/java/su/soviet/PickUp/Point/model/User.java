@@ -21,7 +21,9 @@ import java.util.Set;
 public class User implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_pick_up_point_seq_gen")
+    @SequenceGenerator(name = "users_pick_up_point_seq_gen", sequenceName = "users_pick_up_point_seq",
+            allocationSize = 1)
     private Long id;
 
     @Column(name = "user_name", unique = true, nullable = false)
