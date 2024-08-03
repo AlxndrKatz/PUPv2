@@ -39,6 +39,9 @@ jobs:
         with:
           file: ./Dockerfile
           push: true
+
+          no-cache: true
+
           tags: alexanderkatzur1628/pickup-point:latest
 
   deploy:
