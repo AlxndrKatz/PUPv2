@@ -58,12 +58,12 @@ jobs:
             echo DB_USER=${{ secrets.DB_USER}} >> .env
             echo DB_PASSWORD=${{ secrets.DB_PASSWORD}} >> .env
 
-#
+
             sudo -S docker-compose down
-#            
+
             sudo -S docker stop pick_up_app_pup_1
             sudo -S docker rm pick_up_app_pup_1
             sudo -S docker rmi pick_up_app_pup_1
-            sudo -S docker-compose up -d
-#            sudo -S docker ps -a
+
+            sudo -S docker ps -a
             sudo -S docker-compose up --force-recreate -d
