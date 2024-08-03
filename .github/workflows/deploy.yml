@@ -39,7 +39,7 @@ jobs:
         with:
           file: ./Dockerfile
           push: true
-          tags: alexanderkatzur1628/pickup-point:v1
+          tags: alexanderkatzur1628/pickup-point:latest
 
   deploy:
     name: Deploy
@@ -64,7 +64,6 @@ jobs:
             sudo -S docker stop pick_up_app_pup_1
             sudo -S docker rm pick_up_app_pup_1
             sudo -S docker rmi pick_up_app_pup_1
-
             
             sudo -S docker-compose up --force-recreate -d
             
