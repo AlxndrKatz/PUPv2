@@ -65,5 +65,7 @@ jobs:
             sudo -S docker rm pick_up_app_pup_1
             sudo -S docker rmi pick_up_app_pup_1
 
-            sudo -S docker ps -a
+            
             sudo -S docker-compose up --force-recreate -d
+            
+            sudo -S docker ps -a
