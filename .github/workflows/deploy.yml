@@ -61,8 +61,8 @@ jobs:
             echo DB_USER=${{ secrets.DB_USER}} >> .env
             echo DB_PASSWORD=${{ secrets.DB_PASSWORD}} >> .env
 
-            sudo -S docker stop alexanderkatzur1628/pickup-point:latest
-            sudo -S docker rm alexanderkatzur1628/pickup-point:latest
+            sudo -S docker stop pick_up_app_pup_1
+            sudo -S docker rm pick_up_app_pup_1
             sudo -S docker rmi alexanderkatzur1628/pickup-point:latest
             
             sudo -S docker-compose up --force-recreate -d
